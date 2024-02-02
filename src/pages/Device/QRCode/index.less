@@ -1,0 +1,38 @@
+.comp-device-QR-code {
+    // border: 1px solid #000;
+    height: 356px;
+    width: 475px;
+    @common-height: 200px;
+
+    img {
+        // width: @common-height;
+        // height: @common-height;
+        // border: 1px solid #000;
+        display: block;
+        margin-right: 20px;
+    }
+
+    .text-wrap {
+        // border: 1px solid red;
+        // width: @common-height;
+        height: @common-height + 2;
+        font-weight: 700;
+        font-size: 16px;
+        letter-spacing: 1px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-family: Source Han Sans CN;
+        .code-desc {
+            overflow: hidden;
+            .code-label {
+                margin-bottom: 3px;
+            }
+
+            .code-text {
+                line-height: 18px;
+            }
+        }
+
+    }
+}

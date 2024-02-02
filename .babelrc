@@ -1,0 +1,42 @@
+{ // 预设配置
+  "presets": [
+    // ["@babel/preset-env",{
+    //   "useBuiltIns":"usage", // 自动加载，按需引入
+    //   "corejs": { "version": "3", "proposals": true } 
+    // }], //  一个智能预设，允许您使用最新的 JavaScript。
+    [
+      "@babel/preset-env"
+    ], //  一个智能预设，允许您使用最新的 JavaScript。
+    "@babel/preset-react", // 一个用来编译 React jsx 语法的预设
+    "@babel/preset-typescript" // 一个用来编译 TypeScript 语法的预设
+  ],
+  "plugins": [
+    "@babel/transform-runtime",
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": true
+      }
+    ],
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "libraryDirectory": "es",
+        "style": true // `style: true` 会加载 less 文件
+      }
+    ],
+    [
+      "@babel/plugin-proposal-export-default-from"
+    ],
+    [
+      "add-module-exports"
+    ]
+  ]
+}

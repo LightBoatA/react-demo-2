@@ -1,0 +1,43 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "strictNullChecks": true,
+    "moduleResolution": "node", // 模块解析的策略
+    "jsx": "react-jsx", 
+    "noUnusedParameters": false,
+    "noUnusedLocals": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noImplicitAny": false,
+    "module": "esnext", // 生成代码的模块化标准
+    "allowJs": true,
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "skipLibCheck": true, //跳过生命文件的类型检查
+    "types": [
+      "node",
+      "react",
+      "react-dom"
+    ],
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true, 
+    "isolatedModules": true,
+    "suppressImplicitAnyIndexErrors": true
+  },
+  "include": [
+    "src",
+    "images.d.ts"
+  ],
+  // "exclude":[
+  //   "node_modules"
+  // ],
+  "extends": "./tsconfig.paths"
+}

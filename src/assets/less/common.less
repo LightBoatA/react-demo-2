@@ -1,0 +1,557 @@
+#root {
+  height: 100%;
+  // color: #fff;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  font-family: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  min-width: 1280px;
+  height: 100%;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+/** ------------------------------------------ */
+
+.h100p {
+  height: 100%;
+}
+
+.h50p {
+  height: 50%;
+}
+
+.w100p {
+  width: 100%;
+}
+
+.width60 {
+  width: 60%;
+}
+
+.min-width0 {
+  min-width: 0;
+}
+
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-c-c {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-col-c {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-h-center {
+  justify-content: center;
+}
+
+.flex-h-end {
+  justify-content: flex-end;
+}
+
+.flex-h-sb {
+  justify-content: space-between;
+}
+
+.flex-v-center {
+  align-items: center;
+}
+
+.flex-v-top {
+  align-items: flex-start;
+}
+
+.flex-v-bottom {
+  align-items: flex-end;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-col-100 {
+  .h100p;
+  .flex-col;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.word-break-all {
+  word-break: break-all; // 按字符截断换行 /* 支持IE和chrome，FF不支持*/
+  word-wrap: break-word;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.lh1 {
+  line-height: 1;
+}
+
+.lh2 {
+  line-height: 2;
+}
+
+.lh3 {
+  line-height: 3;
+}
+
+.lh4 {
+  line-height: 4;
+}
+
+.mr5 {
+  margin-right: 5px;
+}
+
+.ml5 {
+  margin-left: 5px;
+}
+
+.mt5 {
+  margin-top: 5px;
+}
+
+.mr8 {
+  margin-right: 8px;
+}
+
+.ml8 {
+  margin-left: 8px;
+}
+
+.mt8 {
+  margin-top: 8px;
+}
+
+.mb8 {
+  margin-bottom: 8px;
+}
+
+.mt10 {
+  margin-top: 10px !important;
+}
+
+.mr10 {
+  margin-right: 10px;
+}
+
+.ml10 {
+  margin-left: 10px;
+}
+
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.mt15 {
+  margin-top: 15px;
+}
+
+.mr15 {
+  margin-right: 15px;
+}
+
+.ml15 {
+  margin-left: 15px;
+}
+
+.mb15 {
+  margin-bottom: 15px;
+}
+
+.mt20 {
+  margin-top: 20px !important;
+}
+
+.mr20 {
+  margin-right: 20px;
+}
+
+.ml16 {
+  margin-left: 16px;
+}
+
+.ml20 {
+  margin-left: 20px;
+}
+
+.mb20 {
+  margin-bottom: 20px !important;
+}
+
+.mt30 {
+  margin-top: 30px;
+}
+
+.mr30 {
+  margin-right: 30px;
+}
+
+.ml30 {
+  margin-left: 30px !important;
+}
+
+.mb30 {
+  margin-bottom: 30px !important;
+}
+
+.mt40 {
+  margin-top: 40px !important;
+}
+
+.mr40 {
+  margin-right: 40px;
+}
+
+.ml40 {
+  margin-left: 40px !important;
+}
+
+.mb40 {
+  margin-bottom: 40px !important;
+}
+.mb50 {
+  margin-bottom: 50px !important;
+}
+.mb60 {
+  margin-bottom: 60px !important;
+}
+.mb70 {
+  margin-bottom: 70px !important;
+}
+.mb80 {
+  margin-bottom: 80px !important;
+}
+.mb90 {
+  margin-bottom: 90px !important;
+}
+.mb100 {
+  margin-bottom: 100px !important;
+}
+
+.mt50 {
+  margin-top: 50px;
+}
+
+.mr50 {
+  margin-right: 50px !important;
+}
+
+.ml50 {
+  margin-left: 50px !important;
+}
+
+
+.mt60 {
+  margin-top: 60px;
+}
+
+.mr60 {
+  margin-right: 60px;
+}
+
+.ml60 {
+  margin-left: 60px;
+}
+
+.mb60 {
+  margin-bottom: 60px;
+}
+
+.mb90 {
+  margin-bottom: 90px;
+}
+
+.p5 {
+  padding: 5px;
+}
+
+.p10 {
+  padding: 10px;
+}
+
+.p15 {
+  padding: 15px;
+}
+
+.p20 {
+  padding: 20px;
+}
+
+.pNr5 {
+  padding: 5px 5px 5px 0;
+}
+
+.pt10 {
+  padding-top: 10px;
+}
+
+.pr10 {
+  padding-right: 10px;
+}
+
+.pl20 {
+  padding-left: 20px;
+}
+
+.pl30 {
+  padding-left: 30px;
+}
+
+.pl40 {
+  padding-left: 40px;
+}
+
+.pb10 {
+  padding-bottom: 10px !important;
+}
+
+.pb15 {
+  padding-bottom: 15px !important;
+}
+
+.pb20 {
+  padding-bottom: 20px !important;
+}
+
+.pb90 {
+  padding-bottom: 90px !important;
+}
+
+.pb70 {
+  padding-bottom: 70px !important;
+}
+
+.fs14 {
+  font-size: 14px;
+}
+
+.fs12 {
+  font-size: 12px;
+}
+
+.fs16 {
+  font-size: 16px;
+}
+
+.fs18 {
+  font-size: 18px;
+}
+
+.fs20 {
+  font-size: 20px;
+}
+
+.white {
+  color: #fff;
+}
+
+.gray {
+  color: #9A9A9A;
+}
+
+// .green {
+//   color: #76FF7F;
+// }
+
+.width96 {
+  width: 96px;
+}
+
+.width88 {
+  width: 88px;
+}
+
+.common-icon-size {
+  width: 12px;
+  height: 12px;
+  margin-right: 7px;
+}
+
+.card {
+  background: #fff;
+  .p15;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2B2B2B;
+  .mb15;
+}
+
+// 单元格样式
+.td-status {
+  display: flex;
+  align-items: center;
+
+  &-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 100%;
+    margin-right: 5px;
+  }
+
+  .bg-orange {
+    background: #F77F06;
+  }
+
+  .bg-red {
+    background: #F92A2A;
+  }
+
+  .bg-green {
+    background: #76FF7F;
+  }
+  
+  .bg-blue {
+    background: #4390FF;
+  }
+}
+
+// 图片展示：中号
+.img-m {
+  width: 96px;
+  height: 96px;
+}
+
+.img-s {
+  width: 75px;
+  height: 75px;
+  margin: 5px;
+}
+
+.btn-border {
+  border: 1px solid #4390FF !important;
+  background: transparent !important;
+  color: #4390FF !important;
+}
+
+// 测试用：border-test
+.bttt {
+  border: 1px solid #000;
+}

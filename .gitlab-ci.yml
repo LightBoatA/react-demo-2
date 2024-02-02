@@ -1,0 +1,119 @@
+ variables:
+  IMAGE_URL: harbor.yunmotec.com:10000
+ 
+ stages:
+   - build
+   - image
+ build dev:
+   image: registry.cn-hangzhou.aliyuncs.com/yunmo/node:19.0.0
+   stage: build
+   tags:
+     - front
+   cache:
+     key: "$CI_COMMIT_REF_SLUG"
+     paths:
+       - node_modules/
+   only:
+     - develop
+   artifacts:
+     expire_in: 1 week
+     paths:
+       - build
+   script:
+     - yarn install
+     - yarn build:dev
+
+
+ image dev:
+   image: registry.yunmotec.com:1443/docker:latest
+   services:
+     - registry.yunmotec.com:1443/docker:dind
+   stage: image
+   tags:
+     - front
+   only:
+     - develop
+   before_script:
+     - docker login -u='robot$gitlab' -p='bXF1yrej2V4vZ5tvVhRskJIkx66s5lxW' harbor.yunmotec.com:10000
+   script:
+     # - export DOCKER_HOST="tcp://localhost:2375"
+     - docker build --pull --build-arg ENV=$CI_COMMIT_REF_NAME -t "$IMAGE_URL/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:${CI_COMMIT_REF_NAME}.${CI_PIPELINE_IID}" -f docker/Dockerfile  .
+     - docker push "$IMAGE_URL/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:${CI_COMMIT_REF_NAME}.${CI_PIPELINE_IID}"
+
+
+ build qa:
+   image: registry.cn-hangzhou.aliyuncs.com/yunmo/node:19.0.0
+   stage: build
+   tags:
+     - front
+   cache:
+     key: "$CI_COMMIT_REF_SLUG"
+     paths:
+       - node_modules/
+   only:
+     - qa
+   artifacts:
+     expire_in: 1 week
+     paths:
+       - build
+   script:
+     - yarn install
+     - yarn build:qa
+
+ image qa:
+   image: registry.yunmotec.com:1443/docker:latest
+   tags:
+     - front
+   services:
+     - registry.yunmotec.com:1443/docker:dind
+   stage: image
+   only:
+     - qa
+   before_script:
+     - docker login -u='robot$gitlab' -p='bXF1yrej2V4vZ5tvVhRskJIkx66s5lxW' harbor.yunmotec.com:10000
+   script:
+     - docker build --pull --build-arg ENV=$CI_COMMIT_REF_NAME -t "$IMAGE_URL/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:${CI_COMMIT_REF_NAME}.${CI_PIPELINE_IID}" -f docker/Dockerfile  .
+     - docker push "$IMAGE_URL/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:${CI_COMMIT_REF_NAME}.${CI_PIPELINE_IID}"
+
+ build prod:
+   image: registry.cn-hangzhou.aliyuncs.com/yunmo/node:19.0.0
+   stage: build
+   tags:
+     - front
+   cache:
+     key: "$CI_PROJECT_NAME"
+     paths:
+       - node_modules/
+   artifacts:
+     expire_in: 1 week
+     paths:
+       - build
+   script:
+     - yarn install
+     - yarn build:prod
+   except:
+     - develop
+     - /^release.*$/
+     - /^feature.*$/
+   only:
+     - tags
+
+ image prod:
+   image: registry.yunmotec.com:1443/docker:latest
+   tags:
+     - front
+   services:
+     - registry.yunmotec.com:1443/docker:dind
+   stage: image
+   script:
+     - docker login -u='robot$gitlab' -p='bXF1yrej2V4vZ5tvVhRskJIkx66s5lxW' harbor.yunmotec.com:10000
+     - image="$IMAGE_URL/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME"
+     - docker build --pull --build-arg ENV=$CI_COMMIT_REF_NAME -t ${image}:latest  -t ${image}:${CI_COMMIT_REF_NAME}.${CI_PIPELINE_IID} -f docker/Dockerfile  .
+     - docker push  "${image}:latest"
+     - docker push "${image}:${CI_COMMIT_REF_NAME}.${CI_PIPELINE_IID}"
+   except:
+     - develop
+     - /^release.*$/
+     - /^feature.*$/
+   only:
+     - tags

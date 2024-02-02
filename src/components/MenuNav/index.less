@@ -1,0 +1,196 @@
+@import '../../assets/less/variable.less';
+
+@baseUrl: "./images/";
+
+@set: {
+  dashboard: "icon_gognzuotai"; // 客户端--工艺研发服务--设备选型
+  device: "icon_shebeiguanli"; // 客户端--工艺研发服务--需求列表
+  discard: "icon_baofeiguanli"; 
+  system: "icon_xitongguanli";
+}
+
+@header-height: 0;
+
+.icon-size {
+  width: 16px;
+  height: 18px;
+}
+
+.module-menu {
+  // min-height: 100%;
+  height: 100%;
+  // height: 1260px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: #fff;
+  // border: 2px solid blueviolet;
+
+  .module-menu-title {
+    height: 100px;
+    color: #000;
+    .logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 8px;
+      background-color: #2F8EFF;
+      margin-right: 15px;
+    }
+    .text {
+      .main {
+        font-size: 20px;
+        font-weight: 700;
+      }
+      .desc {
+        font-size: 8px;
+      }
+    }
+  }
+
+  .module-menu-wrap {
+    width: 100%;
+    // min-height: calc(100vh - @header-height);
+    // max-height: calc(100vh - @header-height);
+
+    min-width: 240px;
+    background: #fff;
+
+    .menu-content {
+
+    }
+
+    each(@set, {
+        .@{key}.icon-size {
+          background: url("@{baseUrl}@{value}.png") top left no-repeat;
+          background-size: 100% 100%;
+        }
+      }
+
+    );
+
+    // .ant-menu-submenu.ant-menu-submenu-inline.ant-menu-submenu-selected {
+    //   color: #2F8EFF;
+
+    //   .ant-menu-submenu-arrow {
+    //     color: #2F8EFF;
+    //   }
+    // }
+
+    .ant-menu-submenu:hover>.ant-menu-submenu-title>.ant-menu-submenu-arrow {
+      color: #2F8EFF;
+    }
+
+    // 二级菜单
+    .ant-menu-submenu.ant-menu-submenu-inline.ant-menu-submenu-open.ant-menu-submenu-selected {
+      // .ant-menu-submenu-arrow {
+      //   // color: #2F8EFF;
+      // }
+
+      each(@set, {
+          .@{key}.icon-size {
+            background: url("@{baseUrl}@{value}_selected.png") top left no-repeat;
+            background-size: 100% 100%;
+          }
+        }
+
+      );
+    }
+
+    .ant-menu-submenu.ant-menu-submenu-active {
+      each(@set, {
+          .@{key}.icon-size {
+            background: url("@{baseUrl}@{value}_selected.png") top left no-repeat;
+            background-size: 100% 100%;
+          }
+        }
+
+      );
+    }
+
+    //  一级菜单
+    .ant-menu-item.ant-menu-item-active {
+      each(@set, {
+          .@{key}.icon-size {
+            background: url("@{baseUrl}@{value}_active.png") top left no-repeat;
+            background-size: 100% 100%;
+          }
+        }
+
+      );
+    }
+
+    .ant-menu-item.ant-menu-item-selected {
+      each(@set, {
+          .@{key}.icon-size {
+            background: url("@{baseUrl}@{value}_selected.png") top left no-repeat;
+            background-size: 100% 100%;
+          }
+        }
+
+      );
+
+      .ant-menu-title-content {
+        color: #2F8EFF !important;
+      }
+    }
+
+    .ant-menu-inline .ant-menu-item::after {
+      border-right: 0.01875rem solid #E1EFFF;
+    }
+
+    .ant-menu {
+      font-size: 16px;
+      list-style: none;
+      // height: 100%;
+    }
+
+    .ant-menu-item {
+      border-radius: 0;
+      width: 100%;
+      list-style: none;
+      &::before {
+        display: none !important;
+      }
+    }
+
+    .ant-menu-submenu.ant-menu-submenu-inline.ant-menu-submenu-open {
+      .ant-menu-inline .ant-menu-item::before {
+        display: flex;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: #000;
+        position: absolute;
+        content: '';
+        margin-left: -5px;
+      }
+
+      .ant-menu-inline .ant-menu-item.ant-menu-item-selected::before,
+      .ant-menu-inline .ant-menu-item.ant-menu-item-active::before {
+        background-color: #2F8EFF;
+        content: '';
+      }
+    }
+
+    .ant-menu.ant-menu-dark {
+      background-color: #242a3a;
+    }
+
+    .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
+      background-color: #E1EFFF;
+    }
+
+    .ant-menu.ant-menu-sub.ant-menu-inline {
+      .icon-size {
+        display: none;
+      }
+    }
+
+    .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+      background-color: #E1EFFF;
+    }
+
+    .ant-menu-sub.ant-menu-inline {
+      background: #f3f4f7;
+    }
+  }
+}

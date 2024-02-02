@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@actions/*": [
+        "src/redux/actions/*"
+      ],
+      "@pages/*": [
+        "src/pages/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@model/*": [
+        "src/model/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@hooks/*": [
+        "src/hooks/*"
+      ],
+      "@redux/*": [
+        "src/redux/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ]
+    }
+  }
+}
